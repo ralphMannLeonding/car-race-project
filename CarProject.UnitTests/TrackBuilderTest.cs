@@ -16,7 +16,7 @@ namespace CarProject.UnitTests
         {
             (int,int)[] sectionInfos = {(10,10),(20,20),(30,30)};
             TrackBuilder builder = new TrackBuilder(sectionInfos);
-            Assert.AreEqual(new Section(10,10), builder.Track.Startsection);
+            Assert.AreEqual(new Section(10,10), builder.Track.StartSection);
         }
     }
 }

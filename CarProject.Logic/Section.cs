@@ -46,5 +46,14 @@ namespace CarProject.Logic
             }
             section.NextSection = this;
         }
+        // mb temp: added to fix equals issue in ItShouldBuildAConnectedTrack_GivenSectionInformation()
+        public override bool Equals(object? obj)
+        {
+            if(obj is Section otherSection)
+            {
+                return this.MaxSpeed == otherSection.MaxSpeed && this.Length == otherSection.Length;
+            }
+            return false;
+        }
     }
 }
