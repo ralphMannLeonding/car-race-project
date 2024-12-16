@@ -13,13 +13,13 @@ namespace CarProject.Logic
 
         public Track Track => _track;
 
-        public TrackBuilder((int, int)[] sectionInfos)
+        public TrackBuilder((int, int)[] sectionInfos, bool closeTrack = false)
         {
             this.sectionInfos = sectionInfos;
-            BuildTrack();
+            BuildTrack(closeTrack);
         }
 
-        private void BuildTrack()
+        private void BuildTrack(bool closeTrack)
         {
             List<Section> sections = new();
             foreach((int speed, int length) in sectionInfos)
@@ -30,6 +30,12 @@ namespace CarProject.Logic
             for(int i = 0; i < sections.Count -1; i++)
             {
                 sections[i].AddAfterMe(sections[i+1]);
+            }
+            if(closeTrack && sections.Count > 1)
+            {
+                Section first = sections[0];
+                Section last = sections[^1];
+                first.AddBeforeMe(last);
             }
             _track = new Track(sections);
         }

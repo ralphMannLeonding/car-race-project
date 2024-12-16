@@ -21,8 +21,8 @@ namespace CarProject.UnitTests
         [TestMethod]
         public void ItShouldCloseTheTrack_WhenCloseTrackIsTrue()
         {
-            (int, int)[] sectionInfo = { (10, 10), (20, 20), (30, 30) };
-            TrackBuilder builder = new TrackBuilder(sectionInfo, true);
+            (int, int)[] sectionInfos = { (10, 10), (20, 20), (30, 30) };
+            TrackBuilder builder = new TrackBuilder(sectionInfos, true);
 
             Section start = builder.Track.StartSection;
             Section second = start.NextSection;
