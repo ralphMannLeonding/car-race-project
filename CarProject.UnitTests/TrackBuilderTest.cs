@@ -18,5 +18,17 @@ namespace CarProject.UnitTests
             TrackBuilder builder = new TrackBuilder(sectionInfos);
             Assert.AreEqual(new Section(10,10), builder.Track.StartSection);
         }
+        [TestMethod]
+        public void ItShouldCloseTheTrack_WhenCloseTrackIsTrue()
+        {
+            (int, int)[] sectionInfo = { (10, 10), (20, 20), (30, 30) };
+            TrackBuilder builder = new TrackBuilder(sectionInfo, true);
+
+            Section start = builder.Track.StartSection;
+            Section second = start.NextSection;
+            Section third = second.NextSection;
+
+            Assert.AreEqual(start, third.NextSection);
+        }
     }
 }
